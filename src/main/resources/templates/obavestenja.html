@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upravljaj obavestenjima</title>
+    <link th:href="@{css/obavestenja.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="forms">
+        <h1>Izbaci obavestenje</h1>
+<form th:object="${obavestenja}" th:action="@{/novoObavestenje}" method="post">
+    <div  class="input-field">
+        <input type="text" th:field="*{naslov}" placeholder="naslov">
+    </div>
+    <div class="input-field">
+
+        <textarea class="input-field-textarea" th:field="*{tekst}" placeholder="tekst"></textarea>
+    </div>
+    <div class="input-field-btn">
+        <input type="submit" value="Izbaci obavestenje">
+    </div>
+</form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="forms">
+        <h1>Izmeni obavestenje</h1>
+        <form th:object="${obavestenja}" th:action="@{/izmeniObavestenje}" method="post">
+
+            <div  class="input-field">
+                <input type="text" th:field="*{id}" placeholder="id">
+            </div>
+
+            <div  class="input-field">
+                <input type="text" th:field="*{naslov}" placeholder="naslov">
+            </div>
+            <div class="input-field">
+
+                <textarea class="input-field-textarea" th:field="*{tekst}" placeholder="tekst"></textarea>
+            </div>
+            <div class="input-field-btn">
+                <input type="submit" value="Izmeni obavestenje">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="forms">
+        <h1>Izbrisi obavestenje</h1>
+        <form th:object="${obavestenja}" th:action="@{/izbrisiObavestenje}" method="post">
+            <div  class="input-field">
+                <input type="text" th:field="*{id}" placeholder="id">
+            </div>
+            <div class="input-field-btn">
+                <input type="submit" value="Izbrisi obavestenje">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

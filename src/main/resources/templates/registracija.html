@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{css/registracija.css}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="forms">
+                <h1>Napravi nalog</h1>
+
+                <form th:object="${korisnik}" th:action="@{/noviKorinsik}" method="post">
+                    <div class="input-field">
+                        <input type="text" th:field="*{ime}" placeholder="Ime" required>
+                    </div>
+                        <div class="input-field">
+                        <input type="text" th:field="*{prezime}" placeholder="Prezime" required>
+                        </div>
+                    <div class="input-field">
+                        <input type="text" th:field="*{email}" placeholder="Email" required>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" th:field="*{sifra}" placeholder="Sifra" required>
+                    </div>
+
+                    <div class="input-field-btn">
+                        <input type="submit" value="Registruj se">
+                    </div>
+                </form>
+                <a class="pocetna" th:href="@{/}">Pocetna</a>
+
+        </div>
+
+        </div>
+
+
+</body>
+</html>

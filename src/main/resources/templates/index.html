@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dimi coin</title>
+    <link th:href="@{css/index.css}" rel="stylesheet">
+
+</head>
+<body>
+<nav>
+<ul class="navUl">
+    <li> <a th:href="@{/login}">Imate nalog?</a> </li>
+    <li><a th:href="@{/registracija}">Registrujte se</a> </li>
+</ul>
+
+    <div id="padajuciMeni">
+
+        <div class="linija1"></div>
+
+        <div class="linija2"></div>
+
+    </div>
+
+</nav>
+
+<img class="pozadina" th:src="@{images/logo-png.png}"/>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8" http-equiv="refresh" content="15">
+  <title>Admin</title>
+  <link th:href="@{css/pocetna.css}" rel="stylesheet">
+  <link th:href="@{css/padajuciMeni.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<nav>
+
+  <ul class="navUl">
+    <li><a th:href="@{/lista}">Lista korisnike</a></li>
+    <li><a th:href="@{/azuriranjeKorisnika}">Upravljanje korisnicima</a></li>
+    <li><a th:href="@{/obavestenja}">Obavestenja</a></li>
+    <li> <a th:href="@{/logout}">Odjavi se</a> </li>
+  </ul>
+
+  <div class="padajuciMeni">
+    <div class="linija1"></div>
+    <div class="linija2"></div>
+  </div>
+
+</nav>
+
+
+<h1 class="h1">Dobro dosli [[${#request.userPrincipal.principal.getUsername}]]</h1>
+
+<div class="tabeleGrupacija">
+  <table class="table">
+
+    <h1 class="h1">Market</h1>
+    <thead>
+    <th>Bitcoin</th>
+    <th>Ethereum</th>
+    <th>Shiba</th>
+    <th>Dodge</th>
+
+    </thead>
+
+    <tbody >
+    <tr th:each="market:${market}">
+      <td  th:text="${market.bitcoin}">1</td>
+      <td th:text="${market.ethereum}">2</td>
+      <td th:text="${market.shiba}">3</td>
+      <td th:text="${market.dodge}">4</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table class="novcanik">
+
+    <h1 class="h1">Novcanik</h1>
+    <thead>
+    <th>Sredstva</th>
+    <th>Bitcoin</th>
+    <th>Ethereum</th>
+    <th>Shiba</th>
+    <th>Dodge</th>
+
+    </thead>
+
+    <tbody>
+    <tr th:each="novcanik:${novcanik}">
+      <td th:text="${novcanik.sredstva}">1</td>
+      <td th:text="${novcanik.bitcoin}">1</td>
+      <td th:text="${novcanik.ethereum}">2</td>
+      <td th:text="${novcanik.shiba}">3</td>
+      <td th:text="${novcanik.dodge}">4</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="container">
+  <div class="forms">
+
+<!--    Kupovina valuta-->
+    <form th:object="${novcanik}" th:type="Double" th:action="@{/kupiBtc}" method="post">
+      <input class="input-field"  th:field="*{sredstva}" placeholder="sredstva">
+      <input class="input-field-btn" type="submit" value="Ulozi u BTC">
+    </form>
+
+    <form th:object="${novcanik}" th:type="Double" th:action="@{/kupiEth}" method="post">
+      <input class="input-field"  th:field="*{sredstva}" placeholder="sredstva" >
+      <input class="input-field-btn" type="submit" value="Ulozi u ETH">
+    </form>
+
+    <form th:object="${novcanik}" th:type="Double" th:action="@{/kupiDodge}" method="post">
+      <input class="input-field"  th:field="*{sredstva}" placeholder="sredstva" >
+      <input class="input-field-btn" type="submit" value="Ulozi u DODGE">
+    </form>
+
+    <form th:object="${novcanik}"  th:type="Double" th:action="@{/kupiShibu}" method="post">
+      <input class="input-field" th:field="*{sredstva}" placeholder="sredstva">
+      <input class="input-field-btn" type="submit" value="Ulozi u SHIBU">
+    </form>
+
+<!--    Prodaja-->
+    <form  th:object="${novcanik}" th:type="Double" th:action="@{/prodajBtc}" method="post">
+      <input class="input-field"  th:field="*{bitcoin}" placeholder="sredstva" >
+      <input class="input-field-btn" type="submit" value="prodaj BTC">
+    </form>
+
+    <form th:object="${novcanik}"  th:type="Double" th:action="@{/prodajEth}" method="post">
+      <input class="input-field" th:field="*{ethereum}" placeholder="sredstva" >
+      <input class="input-field-btn" type="submit" value="prodaj ETH">
+    </form>
+
+    <form th:object="${novcanik}"  th:type="Double" th:action="@{/prodajDodge}" method="post">
+      <input class="input-field"  th:field="*{dodge}" placeholder="sredstva" >
+      <input class="input-field-btn" type="submit" value="prodaj DODGE">
+    </form>
+
+    <form th:object="${novcanik}" th:type="Double" th:action="@{/prodajShibu}" method="post">
+      <input class="input-field"  th:field="*{shiba}" placeholder="sredstva" >
+      <input class="input-field-btn" type="submit" value="prodaj SHIBU">
+    </form>
+
+   </div>
+  </div>
+
+
+<h1 class="obavestenjeH1">Obavestenja</h1>
+
+<div class="obavestenja" th:each="obavestenja:${obavestenja}">
+
+  <p th:text="${obavestenja.id}" sec:authorize="hasAuthority('ADMIN')"></p>
+  <div class="naslov"  th:text="${obavestenja.naslov}">
+
+  </div>
+  <div class="tekst" th:text="${obavestenja.tekst}">
+
+  </div>
+</div>
+
+
+<script type="text/javascript" th:src="@{/padajuciMeni.js}"></script>
+
+</body>
+</html>

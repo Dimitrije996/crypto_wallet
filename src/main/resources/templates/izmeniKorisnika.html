@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Izmeni korisnika</title>
+
+    <link th:href="@{css/registracija.css}" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="forms">
+                <h1>IzmeniKorisnika</h1>
+
+                <form th:object="${korisnik}" th:action="@{/izmeniKorisnika}" method="post">
+
+                    <div class="input-field">
+                        <input type="text" th:field="*{id}" placeholder="id" >
+                    </div>
+
+                    <div class="input-field">
+                        <input type="text" th:field="*{email}" placeholder="Email" >
+                    </div>
+
+                    <div class="input-field">
+                        <input type="text" th:field="*{ime}" placeholder="Ime" >
+                    </div>
+                        <div class="input-field">
+                        <input type="text" th:field="*{prezime}" placeholder="Prezime" >
+                        </div>
+
+                    <div class="input-field-btn">
+                        <input type="submit" value="Izmeni korisnika">
+                    </div>
+                </form>
+
+            <br>
+            <br>
+            <h1>Izbrisi Korisnika /ID</h1>
+
+            <form th:object="${korisnik}" th:action="@{/izbrisiKorisnika}" method="post">
+                <div  class="input-field">
+                    <input type="text" th:field="*{id}" placeholder="id">
+                </div>
+                <div class="input-field-btn">
+                    <input type="submit" value="Izbrisi korisnika">
+                </div>
+            </form>
+
+                <a class="pocetna" th:href="@{/adminHome}">Admin Strana</a>
+
+        </div>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript" th:src="@{/padajuciMeni.js}"></script>
+</body>
+</html>

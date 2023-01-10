@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista korisnika</title>
+    <link th:href="@{css/pocetna.css}" rel="stylesheet">
+    <link th:href="@{css/padajuciMeni.css}" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+
+    <ul class="navUl">
+        <li><a th:href="@{/adminHome}">Admin</a></li>
+        <li><a th:href="@{/azuriranjeKorisnika}">Upravljanje korisnicima</a></li>
+        <li><a th:href="@{/obavestenja}">Obavestenjima</a></li>
+        <li> <a th:href="@{/logout}">Odjavi se</a> </li>
+    </ul>
+
+    <div class="padajuciMeni">
+        <div class="linija1"></div>
+        <div class="linija2"></div>
+        <div class="linija3"></div>
+    </div>
+
+</nav>
+
+<table class="table" >
+    <thead>
+    <tr>
+    <th>ID</th>
+    <th>Ime</th>
+    <th>Prezime</th>
+    <th>Email</th>
+    <th>Tip</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="korisnici : ${korisnici}">
+            <td th:text="${korisnici.id}"></td>
+            <td th:text="${korisnici.ime}"></td>
+            <td th:text="${korisnici.prezime}"></td>
+            <td th:text="${korisnici.email}"></td>
+            <td th:text="${korisnici.getTipKorisnika}"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" th:src="@{/padajuciMeni.js}"></script>
+</body>
+</html>

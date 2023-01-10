@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Izloguj se</title>
+    <link th:href="@{css/registracija.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="forms">
+        <div class="form-login">
+<form th:action="@{/perform_logout}" method="post">
+  <p>Izloguj se?</p>
+  <div class="input-field-btn">
+    <input type="submit" value="Izloguj se">
+  </div>
+
+</form>
+            <a class="pocetna" sec:authorize="hasAuthority('ADMIN')" th:href="@{/adminHome}">Admin Strana</a>
+            <a class="pocetna" sec:authorize="hasAuthority('EDITOR')" th:href="@{/editorHome}">Editor Strana</a>
+            <a class="pocetna" sec:authorize="hasAuthority('KORISNIK')" th:href="@{/korisnikHome}">Pocetna</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
